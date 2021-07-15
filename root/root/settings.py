@@ -71,18 +71,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'root.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-     'default': {
-        'ENGINE': 'mssql',
+'''
+'ENGINE': 'mssql',
         'NAME': 'Task',
         'USER': '',
         'PASSWORD': '',
         'HOST': 'DESKTOP-D457F08',
         'OPTIONS': {'driver': 'ODBC Driver 17 for SQL Server'}
+'''
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+DATABASES = {
+     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'xsolla.db',
     }
 }
 
