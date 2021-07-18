@@ -1,0 +1,673 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Xsolla API",
+        "version": "v1.0"
+    },
+    "basePath": "/api",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Basic": {
+            "type": "basic"
+        }
+    },
+    "security": [
+        {
+            "Basic": []
+        }
+    ],
+    "paths": {
+        "/products": {
+            "get": {
+                "operationId": "products_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The initial index from which to return the results.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "products"
+                ]
+            },
+            "post": {
+                "operationId": "products_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                },
+                "tags": [
+                    "products"
+                ]
+            },
+            "parameters": []
+        },
+        "/products/{id}": {
+            "get": {
+                "operationId": "products_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                },
+                "tags": [
+                    "products"
+                ]
+            },
+            "put": {
+                "operationId": "products_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                },
+                "tags": [
+                    "products"
+                ]
+            },
+            "patch": {
+                "operationId": "products_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                },
+                "tags": [
+                    "products"
+                ]
+            },
+            "delete": {
+                "operationId": "products_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "products"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/stockunits": {
+            "get": {
+                "operationId": "stockunits_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The initial index from which to return the results.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/StockUnit"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "stockunits"
+                ]
+            },
+            "post": {
+                "operationId": "stockunits_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StockUnit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/StockUnit"
+                        }
+                    }
+                },
+                "tags": [
+                    "stockunits"
+                ]
+            },
+            "parameters": []
+        },
+        "/stockunits/{id}": {
+            "get": {
+                "operationId": "stockunits_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/StockUnit"
+                        }
+                    }
+                },
+                "tags": [
+                    "stockunits"
+                ]
+            },
+            "put": {
+                "operationId": "stockunits_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StockUnit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/StockUnit"
+                        }
+                    }
+                },
+                "tags": [
+                    "stockunits"
+                ]
+            },
+            "patch": {
+                "operationId": "stockunits_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StockUnit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/StockUnit"
+                        }
+                    }
+                },
+                "tags": [
+                    "stockunits"
+                ]
+            },
+            "delete": {
+                "operationId": "stockunits_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "stockunits"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/units": {
+            "get": {
+                "operationId": "units_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The initial index from which to return the results.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnitAtStorage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "units"
+                ]
+            },
+            "post": {
+                "operationId": "units_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UnitAtStorage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UnitAtStorage"
+                        }
+                    }
+                },
+                "tags": [
+                    "units"
+                ]
+            },
+            "parameters": []
+        },
+        "/units/{id}": {
+            "get": {
+                "operationId": "units_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UnitAtStorage"
+                        }
+                    }
+                },
+                "tags": [
+                    "units"
+                ]
+            },
+            "put": {
+                "operationId": "units_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UnitAtStorage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UnitAtStorage"
+                        }
+                    }
+                },
+                "tags": [
+                    "units"
+                ]
+            },
+            "patch": {
+                "operationId": "units_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UnitAtStorage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UnitAtStorage"
+                        }
+                    }
+                },
+                "tags": [
+                    "units"
+                ]
+            },
+            "delete": {
+                "operationId": "units_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "units"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "Product": {
+            "required": [
+                "type"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "type": {
+                    "title": "Type",
+                    "type": "string",
+                    "maxLength": 800,
+                    "minLength": 1
+                }
+            }
+        },
+        "StockUnit": {
+            "required": [
+                "sku",
+                "description"
+            ],
+            "type": "object",
+            "properties": {
+                "sku": {
+                    "title": "Sku",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": 0
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "product_type": {
+                    "required": [
+                        "type"
+                    ],
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "title": "ID",
+                            "type": "integer",
+                            "readOnly": true
+                        },
+                        "type": {
+                            "title": "Type",
+                            "type": "string",
+                            "maxLength": 800,
+                            "minLength": 1
+                        }
+                    },
+                    "readOnly": true
+                }
+            }
+        },
+        "UnitAtStorage": {
+            "required": [
+                "cost",
+                "count"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "cost": {
+                    "title": "Cost",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": 0
+                },
+                "count": {
+                    "title": "Count",
+                    "type": "integer",
+                    "maximum": 32767,
+                    "minimum": 0
+                },
+                "sku": {
+                    "required": [
+                        "sku",
+                        "description"
+                    ],
+                    "type": "object",
+                    "properties": {
+                        "sku": {
+                            "title": "Sku",
+                            "type": "integer",
+                            "maximum": 2147483647,
+                            "minimum": 0
+                        },
+                        "description": {
+                            "title": "Description",
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "product_type": {
+                            "required": [
+                                "type"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "title": "ID",
+                                    "type": "integer",
+                                    "readOnly": true
+                                },
+                                "type": {
+                                    "title": "Type",
+                                    "type": "string",
+                                    "maxLength": 800,
+                                    "minLength": 1
+                                }
+                            },
+                            "readOnly": true
+                        }
+                    },
+                    "readOnly": true
+                }
+            }
+        }
+    }
+}
